@@ -6,7 +6,7 @@ public class BankAccount {
 	
 	//static >> belongs to the class not the object instance
 	//final >> constant (often static final)
-	static final String routingNumber = "021225";
+	private static final String routingNumber = "021225";
 	
 	//instant variables
 	String name;
@@ -51,15 +51,20 @@ public class BankAccount {
 	
 	
 	//defined methods
-	void deposit() {
-		
-		
-		
-	}
-	void withdraw() {
+	void deposit(double amount) {
+		balance = balance + amount;
+		showActivity("DEPOSIT");
 		
 	}
-	void withdrawl() {
+	void withdraw(double amount) {
+		balance = balance + amount;
+		showActivity("WITHDRAW");
+	}
+	
+	// private can only be called within class
+	private void showActivity(String activity) {
+		System.out.println("your recent transaction:" + activity);
+		System.out.println("YPUR NEW BALANCE IS: $ " + balance);
 		
 	}
 	void checkingBalance(){
@@ -71,6 +76,6 @@ public class BankAccount {
 	}
 	@Override
 		public String toString() {
-			return"[" + name + ". " + accountNumber + ". BALANCE: $" + balance +"]";
+			return"[NAME " + name + "ACCOUNT# " + accountNumber + "ROUTING #" + routingNumber + "BALACNE: $" + balance +"]";
 		}
 }
